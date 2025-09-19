@@ -42,7 +42,7 @@ public class AnimationState : MonoBehaviour
             animator.SetBool(isWalkingHash, false);
         }
         //if player is not running and  W and LeftShift is pressed, set isRunning to true and play running animation
-        if (  ( !walkFoward && RunFoward))
+        if (  ( walkFoward && RunFoward))
         {
             animator.SetBool(isRunningHash, true);
         }
