@@ -18,10 +18,10 @@ public class BlendTreeAnimationState : MonoBehaviour
     // Movement settings
     public float acceleration = 0.05f;
     public float maxWalkSpeed = 0.5f;
-    public float maxRunSpeed = 2.0f;
+    public float maxRunSpeed = 1.0f;
 
     // World movement multiplier
-    public float moveSpeedMultiplier = 2.0f;
+    public float moveSpeedMultiplier = 0.25f;
 
     void Start()
     {
@@ -39,10 +39,9 @@ public class BlendTreeAnimationState : MonoBehaviour
         bool backward = Input.GetKey(KeyCode.S);
         bool left = Input.GetKey(KeyCode.A);
         bool right = Input.GetKey(KeyCode.D);
-        bool run = Input.GetKey(KeyCode.LeftShift);
 
         // Walk or run speed
-        float currentMaxSpeed = run ? maxRunSpeed : maxWalkSpeed;
+        float currentMaxSpeed =  maxRunSpeed = maxWalkSpeed;
 
         // Target speeds
         float targetZ = 0f;
@@ -53,9 +52,13 @@ public class BlendTreeAnimationState : MonoBehaviour
         if (left) targetX = -currentMaxSpeed;
         if (right) targetX = currentMaxSpeed;
 
-        // Smooth accel/decel
-        VelocityZ = Mathf.MoveTowards(VelocityZ, targetZ, acceleration * Time.deltaTime);
+        // Smooth accel/decel 
+        VelocityZ = Mathf.MoveTowards(VelocityZ, targetZ, acceleration * Time.deltaTime);   
         VelocityX = Mathf.MoveTowards(VelocityX, targetX, acceleration * Time.deltaTime);
+        // Decelerate to zero if no input (this prevents sliding) 
+        if (!forward && !backward) VelocityZ = Mathf.MoveTowards(VelocityZ, 0, acceleration * Time.deltaTime);
+        if (!left && !right) VelocityX = Mathf.MoveTowards(VelocityX, 0, acceleration * Time.deltaTime);
+
 
         // Combine into a vector and normalize diagonals
         Vector3 rawMove = new Vector3(VelocityX, 0f, VelocityZ);
@@ -72,6 +75,5 @@ public class BlendTreeAnimationState : MonoBehaviour
 
         animator.SetFloat(velocityXHash, normX);
         animator.SetFloat(velocityZHash, normZ);
-        animator.SetBool(isRunningHash, run);
     }
 }
