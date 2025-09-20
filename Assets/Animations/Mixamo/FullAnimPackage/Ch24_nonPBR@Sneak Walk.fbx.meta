@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fcb8fa248e95b0b4abdbe7b950cad69c
+guid: 87d0bf6b1c5bc564eba355950b04cbac
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Sneak Walk
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 27
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -44,6 +44,7 @@ public class Eyeballs : MonoBehaviour
         transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
         //player moves on the x only
         Player.transform.rotation = Quaternion.AngleAxis(mouseLook.x, Player.transform.up);
+        
 
         
     }
