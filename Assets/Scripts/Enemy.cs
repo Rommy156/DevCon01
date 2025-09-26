@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed = 3.5f;
     public float waitTime = 0.5f;
     public float turnSpeed = 90f;
-    public float timeToSpotPlayer = 5f;
+    public float timeToSpotPlayer = 2f;
     public Light spotlight;
     public float viewDistance = 10f;
     public LayerMask viewMask;

@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9e1d0e201f7f94f9d07c4e8fe087bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 5.18
-  smoothFactor: 0.36
+  player: {fileID: 5669003298315780010}
+  smoothSpeed: 0.5
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
