@@ -1,16 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHearing : MonoBehaviour
 {
     public static List<EnemyHearing> allEnemies = new List<EnemyHearing>();
-    public float hearingSensitivity = 5f;
+
+    [Header("Hearing Settings")]
+    public float hearingSensitivity = 5f;   // max distance this enemy can hear
+    public float moveSpeed = 2f;            // how fast enemy moves toward sound
+
+    private Vector3? lastHeardPosition = null;
 
     private void OnEnable()
     {
         allEnemies.Add(this);
     }
+
     private void OnDisable()
     {
         allEnemies.Remove(this);
@@ -21,7 +26,8 @@ public class EnemyHearing : MonoBehaviour
         foreach (var enemy in allEnemies)
         {
             float distance = Vector3.Distance(enemy.transform.position, footstepPosition);
-            if (distance <= radius && distance <= enemy.hearingSensitivity)
+
+            if (distance <= Mathf.Min(radius, enemy.hearingSensitivity))
             {
                 enemy.OnHearFootstep(footstepPosition);
             }
@@ -30,10 +36,23 @@ public class EnemyHearing : MonoBehaviour
 
     public void OnHearFootstep(Vector3 footstepPosition)
     {
-        // Implement enemy reaction to hearing a footstep
-        Debug.Log($"{gameObject.name} heard a footstep at {footstepPosition}");
-        // For example, move towards the footstep position
-        // This is just a placeholder; actual movement logic would depend on your enemy AI implementation
-        transform.position = Vector3.MoveTowards(transform.position, footstepPosition, 1f);
+        Debug.Log($"Enemy heard a footstep at {footstepPosition}");
+        lastHeardPosition = footstepPosition;
+    }
+
+    private void Update()
+    {
+        if (lastHeardPosition.HasValue)
+        {
+            // Move toward last heard position
+            transform.position = Vector3.MoveTowards(transform.position, lastHeardPosition.Value, moveSpeed * Time.deltaTime
+            );
+
+            // Stop once reached
+            if (Vector3.Distance(transform.position, lastHeardPosition.Value) < 0.1f)
+            {
+                lastHeardPosition = null;
+            }
+        }
     }
 }

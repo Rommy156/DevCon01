@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     Animator animator;
     Transform player;
     float viewAngle;
+    public bool heardFootstep;
+    public Vector3 lastHeardPosition;
 
     void Start()
     {
@@ -62,6 +64,11 @@ public class Enemy : MonoBehaviour
                 OnPlayerSpotted();
             }
         }
+        if (heardFootstep)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, lastHeardPosition, speed * Time.deltaTime);
+        }
+
     }
 
     bool CanSeePlayer()
@@ -81,6 +88,7 @@ public class Enemy : MonoBehaviour
             }
         }
         return false;
+
     }
 
     IEnumerator FollowPath(Vector3[] wayPoints)

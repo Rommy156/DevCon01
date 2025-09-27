@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFootsteps : MonoBehaviour
 {
+    //audio variables
     public AudioSource footstepSource;
-    public AudioClip footstep;
+    public AudioClip[] walkFootsteps;
+    public AudioClip[] runFootsteps;
     public float walkstepDistance = 0.4f;
     public float runstepDistance = 0.25f;
-
-    private AudioSource audioSource;
+    
     private float stepTimer;
-    private Animator animator;
 
     bool isRunning = false;
     public float footstepVolume = 0.5f;
@@ -20,77 +18,54 @@ public class PlayerFootsteps : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+
         stepTimer = walkstepDistance;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.loop = false;
+
+        if (footstepSource == null)
+            footstepSource = GetComponent<AudioSource>();
+
+        if (footstepSource != null)
+            footstepSource.loop = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Check if running (Shift + W/A/S/D)
+        // Check movement input
         bool isMoving = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
                         Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
-        bool isRunning = isMoving && Input.GetKey(KeyCode.LeftShift);
+        isRunning = isMoving && Input.GetKey(KeyCode.LeftShift);
 
-        if (isRunning)
-        {
-            stepTimer -= Time.deltaTime;
-            if (stepTimer <= 0f)
-            {
-                footstepSource.PlayOneShot(footstep);
-                stepTimer = footstepVolume;
-            }
-        }
-        else
-        {
-            stepTimer = footstepVolume; // reset when not running
-        }
-        void PlayFootstep()
-        {
-            {
-                audioSource.clip = footstep;
-                audioSource.volume = isRunning ? footstepVolume * 1.5f : footstepVolume;
-                audioSource.Play();
+        // Step interval depends on running/walking
+        float stepInterval = isRunning ? runstepDistance : walkstepDistance;
 
-                float radius = isRunning ? hearingRadius * 1.5f : hearingRadius;
-                EnemyHearing.AlertEnemies(transform.position, radius);
-            }
-
-        }
-        if (isMoving && animator.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+        if (isMoving)
         {
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f)
             {
                 PlayFootstep();
-                stepTimer = runstepDistance;
-            }
-        }
-        else if (isMoving && animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-        {
-            stepTimer -= Time.deltaTime;
-            if (stepTimer <= 0f)
-            {
-                PlayFootstep();
-                stepTimer = walkstepDistance;
+                stepTimer = stepInterval;
             }
         }
         else
         {
-            stepTimer = 0f; // reset when not moving
+            stepTimer = stepInterval; // reset when idle
         }
+
     }
     void PlayFootstep()
     {
-        {
-            audioSource.clip = footstep;
-            audioSource.volume = isRunning ? footstepVolume * 1.5f : footstepVolume;
-            audioSource.Play();
-            float radius = isRunning ? hearingRadius * 1.5f : hearingRadius;
-            EnemyHearing.AlertEnemies(transform.position, radius);
-        }
-    }
+        if (footstepSource == null) return;
 
-}
+         AudioClip clipToPlay = isRunning
+         ? runFootsteps[Random.Range(0, runFootsteps.Length)]
+         : walkFootsteps[Random.Range(0, walkFootsteps.Length)];
+
+        footstepSource.volume = isRunning ? footstepVolume * 1.5f : footstepVolume;
+        footstepSource.PlayOneShot(clipToPlay);
+
+        float radius = isRunning ? hearingRadius * 1.5f : hearingRadius;
+        EnemyHearing.AlertEnemies(transform.position, radius);
+    }
+    }
