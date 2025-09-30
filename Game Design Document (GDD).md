@@ -46,8 +46,6 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 
 # 5. **Front End**
 * Main Menu: Start Game, Continue, Options, Exit.
-* HUD: Minimalist, immersive UI.
-* Health/Detection meter (small icon, changes color based on suspicion).
 * Noise indicator.
 
 # 6. **Audio Design**
@@ -57,7 +55,7 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 
 # 7. **References**
 * Mixamo 3d character and animation library
-* YouTube tutorial [iIHeartGameDev]
+* YouTube tutorial [iIHeartGameDev, Sebastian Lauge ]
 * Unity Asset Store: RPG Poly Pack https://assetstore.unity.com/packages/3d/environments/landscapes/rpg-poly-pack-lite-148410
 * Bensound: Crime Scene by FoePound - License code: 2CE2FHTCJAKTEYJC, Evolution by Benjamin Tissot - License code: QX5RDLDFMZSXWKFV
 * Pixabay: RUNNING ON GRASS Sound Effect by freesound_communnity
