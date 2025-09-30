@@ -14,13 +14,13 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 
 # 3. **Gameplay**
 ## 3.1 Movement
-* Forward movement
+* 360 movement
 * Silent vs Noisy movement
 ## 3.2 Stealth
 * Enemy vision cones
 * Sound radius for footstep, running and object interaction
 ## 3.3 Core Loop:
-* (observe → plan → act → adapt)
+* (observe → plan → act)
 ## 3.4 AI Behaviors
 * Semi-random routes
 * Investigate noise
@@ -45,8 +45,9 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 * Minimal feedback system (simple visibility indicator and noise meter)
 
 # 5. **Front End**
-* Main Menu: Start Game, Continue, Options, Exit.
+* Main Menu: Start Game, Restart, Continue, Options, Exit.
 * Noise indicator.
+* Visibility meter
 
 # 6. **Audio Design**
 * Enemy chatter & alert states.
@@ -55,7 +56,7 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 
 # 7. **References**
 * Mixamo 3d character and animation library
-* YouTube tutorial [iIHeartGameDev, Sebastian Lauge ]
+* YouTube tutorial [iIHeartGameDev, Sebastian Lauge]
 * Unity Asset Store: RPG Poly Pack https://assetstore.unity.com/packages/3d/environments/landscapes/rpg-poly-pack-lite-148410
 * Bensound: Crime Scene by FoePound - License code: 2CE2FHTCJAKTEYJC, Evolution by Benjamin Tissot - License code: QX5RDLDFMZSXWKFV
 * Pixabay: RUNNING ON GRASS Sound Effect by freesound_communnity
