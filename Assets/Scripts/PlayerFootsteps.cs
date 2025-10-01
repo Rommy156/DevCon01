@@ -26,6 +26,8 @@ public class PlayerFootsteps : MonoBehaviour
 
         if (footstepSource != null)
             footstepSource.loop = false;
+
+        PlayFootstep();
     }
 
     // Update is called once per frame
@@ -58,9 +60,7 @@ public class PlayerFootsteps : MonoBehaviour
     {
         if (footstepSource == null) return;
 
-         AudioClip clipToPlay = isRunning
-         ? runFootsteps[Random.Range(0, runFootsteps.Length)]
-         : walkFootsteps[Random.Range(0, walkFootsteps.Length)];
+         AudioClip clipToPlay = isRunning ? runFootsteps[Random.Range(0, runFootsteps.Length)] : walkFootsteps[Random.Range(0, walkFootsteps.Length)];
 
         footstepSource.volume = isRunning ? footstepVolume * 1.5f : footstepVolume;
         footstepSource.PlayOneShot(clipToPlay);

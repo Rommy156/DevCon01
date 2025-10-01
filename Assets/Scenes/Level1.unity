@@ -921,6 +921,7 @@ GameObject:
   - component: {fileID: 8906787230664512045}
   - component: {fileID: 8906787230664512047}
   - component: {fileID: 8906787230664512046}
+  - component: {fileID: 8906787230664512048}
   m_Layer: 0
   m_Name: Ninja
   m_TagString: Player
@@ -3095,7 +3096,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 750
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -3191,6 +3192,20 @@ MonoBehaviour:
   runstepDistance: 0.25
   footstepVolume: 6.26
   hearingRadius: 5
+--- !u!114 &8906787230664512048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609572388554077019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e86df912e48f0a4c84d55769fbfaf84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 1118049762}
+  footstepClip: {fileID: 8300000, guid: 8273f127f09c1204ab33d7c8976c45f4, type: 3}
 --- !u!4 &8938431015828373388
 Transform:
   m_ObjectHideFlags: 0
