@@ -43,6 +43,9 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 * Make players feel clever by outsmarting enemy while feeling tense
 * Use of sound to distract and lure enemies
 * Minimal feedback system (simple visibility indicator and noise meter)
+* Make player more immersed (real life experience)
+* Complex semi-random paths as level progresses
+* Flickering lights to to expose certain paths for ceertain time frame window
 
 # 5. **Front End**
 * Main Menu: Start Game, Restart, Continue, Options, Exit.
@@ -55,8 +58,9 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 * Tense music that escalates when spotted.
 
 # 7. **References**
-* Mixamo 3d character and animation library
-* YouTube tutorial [iIHeartGameDev, Sebastian Lauge]
+* Mixamo 3d character and animation library (Character: Ninja, Mutant. Animation: Crouch Walk Foward, Idle,)
+* YouTube tutorial [iIHeartGameDev: How to Animate Characters in Unity 3D | Two Dimensional Blend Trees Explained, 1D Blend Trees Explained https://www.youtube.com/watch?v=_J8RPIaO2Lc&t=175s
+ Sebastian Lauge: Introduction to Game Development (E23: stealth game 1/3), (E23: stealth game 2/3), (E25: stealth game 3/3) https://www.youtube.com/watch?v=jUdx_Nj4Xk0
 * Unity Asset Store: RPG Poly Pack https://assetstore.unity.com/packages/3d/environments/landscapes/rpg-poly-pack-lite-148410
 * Bensound: Crime Scene by FoePound - License code: 2CE2FHTCJAKTEYJC, Evolution by Benjamin Tissot - License code: QX5RDLDFMZSXWKFV
 * Pixabay: RUNNING ON GRASS Sound Effect by freesound_communnity
