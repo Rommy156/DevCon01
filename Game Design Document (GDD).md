@@ -1,5 +1,6 @@
 # 1. **Introduction**
  **3D stealth-action** game where you play a ninja infiltrating heavily guarded environment to find a treasure. Success depends on stealth and strategy rather than brute force. The player must blend into shadows, avoid detection, and silently eliminate targets to achieve objectives.
+ <img width="1919" height="843" alt="Screenshot 2025-10-17 142709" src="https://github.com/user-attachments/assets/442f8ee4-b03d-4beb-beb1-8b22121f7932" />
 
 ## 1.1 Desired Game Mechanic or Feature
 ### _The prototype focuses on stealth visibility and noise detection systems in a 3D ninja stealth game._
@@ -41,6 +42,7 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 
 # 4. **Design rationale**
 * Make players feel clever by outsmarting enemy while feeling tense
+
 * Use of sound to distract and lure enemies
 * Minimal feedback system (simple visibility indicator and noise meter)
 * Make player more immersed (real life experience)
@@ -51,6 +53,8 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 * Main Menu: Start Game, Restart, Continue, Options, Exit.
 * Noise indicator.
 * Visibility meter
+  <img width="1875" height="448" alt="Screenshot 2025-10-17 142738" src="https://github.com/user-attachments/assets/6cfc78c8-b1fb-4119-a855-2bc43d5b9592" />
+
 
 # 6. **Audio Design**
 * Enemy chatter & alert states.
@@ -58,9 +62,10 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 * Tense music that escalates when spotted.
 
 # 7. **References**
-* Mixamo 3d character and animation library (Character: Ninja, Mutant. Animation: Crouch Walk Foward, Idle,)
-* YouTube tutorial [iIHeartGameDev: How to Animate Characters in Unity 3D | Two Dimensional Blend Trees Explained, 1D Blend Trees Explained https://www.youtube.com/watch?v=_J8RPIaO2Lc&t=175s
- Sebastian Lauge: Introduction to Game Development (E23: stealth game 1/3), (E23: stealth game 2/3), (E25: stealth game 3/3) https://www.youtube.com/watch?v=jUdx_Nj4Xk0
+* Mixamo 3d character and animation library (Character: Ninja, Mutant. Animation: Crouch Walk Foward, Idle,) https://www.mixamo.com/#/
+* **YouTube Tutorial**
+* iIHeartGameDev: How to Animate Characters in Unity 3D | Two Dimensional Blend Trees Explained, 1D Blend Trees Explained https://www.youtube.com/watch?v=_J8RPIaO2Lc&t=175s
+* Sebastian Lauge: Introduction to Game Development (E23: stealth game 1/3), (E23: stealth game 2/3), (E25: stealth game 3/3) https://www.youtube.com/watch?v=jUdx_Nj4Xk0]
 * Unity Asset Store: RPG Poly Pack https://assetstore.unity.com/packages/3d/environments/landscapes/rpg-poly-pack-lite-148410
 * Bensound: Crime Scene by FoePound - License code: 2CE2FHTCJAKTEYJC, Evolution by Benjamin Tissot - License code: QX5RDLDFMZSXWKFV
 * Pixabay: RUNNING ON GRASS Sound Effect by freesound_communnity
