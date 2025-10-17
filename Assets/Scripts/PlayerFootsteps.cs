@@ -8,7 +8,7 @@ public class PlayerFootsteps : MonoBehaviour
     public AudioClip[] runFootsteps;
     public float walkstepDistance = 0.4f;
     public float runstepDistance = 0.25f;
-    
+
     private float stepTimer;
 
     bool isRunning = false;
@@ -17,8 +17,7 @@ public class PlayerFootsteps : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-
+    { 
         stepTimer = walkstepDistance;
 
         if (footstepSource == null)
@@ -54,8 +53,7 @@ public class PlayerFootsteps : MonoBehaviour
         {
             stepTimer = stepInterval; // reset when idle
         }
-
-    }
+    } 
     void PlayFootstep()
     {
         if (footstepSource == null) return;

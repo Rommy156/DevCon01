@@ -1,19 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
 
 public class EnemyHearing : MonoBehaviour
 {
+
     public static List<EnemyHearing> allEnemies = new List<EnemyHearing>();
+    private static CaughtUIScript CaughtUIScript;
 
-    [Header("Hearing Settings")]
-    public float hearingSensitivity = 5f;   // max distance this enemy can hear
-    public float moveSpeed = 2f;            // how fast enemy moves toward sound
 
-    private Vector3? lastHeardPosition = null;
+    // Enemy Hearing parameters
+    // max distance this enemy can hear. how fast enemy moves toward sound
+    public float hearingSensitivity = 5f;
+    public float moveSpeed = 2f;
+    public float radius = 10f;
+    public AudioSource alertSound;
+    // Last heard footstep position is null if none heard
+    private Vector3? lastHeardPosition;
+    public float caughtIncreaseRate = 5f;
 
     private void OnEnable()
     {
+        // Register this enemy
         allEnemies.Add(this);
+
+        //reference UI
+        if (CaughtUIScript == null)
+        {
+            CaughtUIScript = GameObject.FindObjectOfType<CaughtUIScript>();
+        }
     }
 
     private void OnDisable()
@@ -23,6 +39,8 @@ public class EnemyHearing : MonoBehaviour
 
     public static void AlertEnemies(Vector3 footstepPosition, float radius)
     {
+        // Notify all enemies within radius. for each enemy, check distance to footstepPosition.
+        // If within radius and enemy's hearingSensitivity, call OnHearFootstep
         foreach (var enemy in allEnemies)
         {
             float distance = Vector3.Distance(enemy.transform.position, footstepPosition);
@@ -36,23 +54,52 @@ public class EnemyHearing : MonoBehaviour
 
     public void OnHearFootstep(Vector3 footstepPosition)
     {
+        CaughtUIScript.playerVisible = false;
         Debug.Log($"Enemy heard a footstep at {footstepPosition}");
         lastHeardPosition = footstepPosition;
-    }
 
-    private void Update()
+        // Play alert sound
+        if (alertSound != null && !alertSound.isPlaying)
+        {
+            alertSound.Play();
+        }
+        // Update UI to indicate player is visible due to sound
+        if (CaughtUIScript != null)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, footstepPosition);
+            CaughtUIScript.caughtSlider.value += caughtIncreaseRate * Time.deltaTime;
+            // Clamp caught value to max value and set playerVisible to true if max reached
+            if (CaughtUIScript.caughtSlider.value >= CaughtUIScript.maxCaughtValue)
+            {
+                CaughtUIScript.playerVisible = true;
+                CaughtUIScript.caughtSlider.value = CaughtUIScript.maxCaughtValue;
+            }
+
+        }
+    }
+    public void Update()
     {
         if (lastHeardPosition.HasValue)
         {
-            // Move toward last heard position
-            transform.position = Vector3.MoveTowards(transform.position, lastHeardPosition.Value, moveSpeed * Time.deltaTime
-            );
-
-            // Stop once reached
-            if (Vector3.Distance(transform.position, lastHeardPosition.Value) < 0.1f)
+            //store last heard position value in target 
+            Vector3 target = lastHeardPosition.Value;
+            transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            //rotate toward last heard position
+            Vector3 direction = (target - transform.position).normalized;
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            }
+            if (Vector3.Distance(transform.position, target) < 1f)
             {
                 lastHeardPosition = null;
+                if (CaughtUIScript != null)
+                {
+                    CaughtUIScript.playerVisible = false;
+                }
             }
         }
+
     }
 }

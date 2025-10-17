@@ -146,4 +146,8 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * viewDistance);
     }
+    public CaughtUIScript caughtMeter;
+    void OnplayerDetected() { caughtMeter.playerVisible = true; }
+    void OnplayerLost() { caughtMeter.playerVisible = false; }
 }
+
