@@ -51,10 +51,10 @@ How the use of sound, light, and an intelligent AI system is used make a simple,
 # 5. **Front End**
 * Main Menu: Start Game, Restart, Continue, Options, Exit.
 * Noise indicator.
-* <img width="1875" height="448" alt="Screenshot 2025-10-17 142738" src="https://github.com/user-attachments/assets/6cfc78c8-b1fb-4119-a855-2bc43d5b9592" />
+  <img width="1875" height="448" alt="Screenshot 2025-10-17 142738" src="https://github.com/user-attachments/assets/6cfc78c8-b1fb-4119-a855-2bc43d5b9592" />
 * Visibility indicator
-* <img width="1919" height="830" alt="Screenshot 2025-10-22 154609" src="https://github.com/user-attachments/assets/8615f20a-4935-457e-ba20-b54ba4aa6b3f" />
   <img width="280" height="71" alt="Screenshot 2025-10-22 154625" src="https://github.com/user-attachments/assets/e9ae4bd8-9cd6-410f-9f35-4634308986ea" />
+  <img width="1919" height="830" alt="Screenshot 2025-10-22 154609" src="https://github.com/user-attachments/assets/8615f20a-4935-457e-ba20-b54ba4aa6b3f" />
 
 # 6. **Audio Design**
 * Enemy chatter & alert states.
